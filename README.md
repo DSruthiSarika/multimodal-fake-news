@@ -58,8 +58,8 @@ Evaluation includes:
 * Classification report (Precision, Recall, F1-score)
 * Confusion matrix visualization
 
-<img src="assets/confusion_matrix.png" width="500"/>
-<img src="assets/accuracy_plot.png" width="500"/>
+<img src="assets/confusion_matrix .png" width="500"/>
+<img src="assets/accuracy_plot .png" width="500"/>
 
 ---
 
