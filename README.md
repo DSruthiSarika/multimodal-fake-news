@@ -78,10 +78,11 @@ Model comparison helps identify the most suitable algorithm, and visualization t
 ## Project Structure
 
 multimodal-fake-news/
-│── main.py
-│── README.md
-│── requirements.txt
-│── .gitignore
+│
+├── main.py
+├── README.md
+├── requirements.txt
+├── .gitignore
 │
 ├── data/
 │   └── final_multimodal_dataset.csv
