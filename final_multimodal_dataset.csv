@@ -1,0 +1,21 @@
+text,image_url,label,source,confidence
+Government launches new AI policy to improve healthcare,https://picsum.photos/seed/real1/200/200,REAL,news,0.95
+Aliens have secretly taken control of major cities,https://picsum.photos/seed/fake1/200/200,FAKE,social_media,0.6
+Stock markets show stable growth in the last quarter,https://picsum.photos/seed/real2/200/200,REAL,news,0.92
+Miracle cure discovered that can heal all diseases instantly,https://picsum.photos/seed/fake2/200/200,FAKE,blog,0.55
+New renewable energy initiatives announced by government,https://picsum.photos/seed/real3/200/200,REAL,news,0.93
+Scientists confirm time travel machine exists,https://picsum.photos/seed/fake3/200/200,FAKE,social_media,0.58
+Education reforms introduced to improve student outcomes,https://picsum.photos/seed/real4/200/200,REAL,news,0.94
+Celebrity cloned using secret alien technology,https://picsum.photos/seed/fake4/200/200,FAKE,blog,0.57
+AI tools helping doctors detect diseases early,https://picsum.photos/seed/real5/200/200,REAL,news,0.96
+Hidden underground city discovered beneath ocean,https://picsum.photos/seed/fake5/200/200,FAKE,social_media,0.59
+New policies to boost economic development introduced,https://picsum.photos/seed/real6/200/200,REAL,news,0.91
+Man claims to have lived without food for 10 years,https://picsum.photos/seed/fake6/200/200,FAKE,blog,0.54
+Advancements in robotics improve industrial efficiency,https://picsum.photos/seed/real7/200/200,REAL,news,0.93
+Secret government project reveals teleportation device,https://picsum.photos/seed/fake7/200/200,FAKE,social_media,0.56
+Researchers develop new method for clean energy production,https://picsum.photos/seed/real8/200/200,REAL,news,0.94
+Flying cars already in use but hidden from public,https://picsum.photos/seed/fake8/200/200,FAKE,blog,0.57
+Healthcare sector sees improvement with digital systems,https://picsum.photos/seed/real9/200/200,REAL,news,0.95
+Time traveler shares future events happening next year,https://picsum.photos/seed/fake9/200/200,FAKE,social_media,0.58
+New technology improves communication networks worldwide,https://picsum.photos/seed/real10/200/200,REAL,news,0.92
+Scientists discover humans can breathe underwater,https://picsum.photos/seed/fake10/200/200,FAKE,blog,0.55
