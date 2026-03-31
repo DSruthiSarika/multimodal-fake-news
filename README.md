@@ -77,6 +77,9 @@ Model comparison helps identify the most suitable algorithm, and visualization t
 
 ## Project Structure
 
+The project is organized as follows:
+
+```bash
 multimodal-fake-news/
 │
 ├── main.py
@@ -93,6 +96,7 @@ multimodal-fake-news/
 ├── assets/
 │   ├── confusion_matrix.png
 │   └── accuracy_plot.png
+```
 
 ---
 
