@@ -1,87 +1,111 @@
-# Multimodal Fake News Detection using Text and Image Fusion
-
-## Overview
-
-With the rapid growth of digital media, the spread of misleading and false information has become a major concern. Detecting fake news is challenging because such content often combines convincing text with misleading visuals.
-
-This project explores a multimodal approach to fake news detection by combining both textual and visual information. Instead of relying only on text, the system integrates image-based features to better capture the context of news content and improve prediction performance.
+🚀# Multimodal Fake News Detection using Text and Image Fusion
 
 ---
 
-## Problem Statement
+## Abstract
 
-Fake news detection is difficult due to:
-
-* Highly unstructured and noisy data
-* Nonlinear relationships between text and visual content
-* Misleading headlines and fabricated claims
-* Limitations of traditional text-only models
-
-Most existing approaches focus only on textual analysis, which can miss important signals present in images.
+The rapid growth of digital media has significantly increased the spread of misinformation across online platforms. Traditional fake news detection systems rely mainly on textual analysis, often overlooking the contextual signals provided by images. This project presents a multimodal machine learning framework that integrates both textual and visual features to improve the accuracy and robustness of fake news classification. By combining Natural Language Processing (NLP) and image-based feature extraction, the system captures richer patterns and enhances prediction reliability.
 
 ---
 
-## Proposed Solution
+## Motivation
 
-This project introduces a multimodal machine learning pipeline that combines:
-
-* **Text Features**: Extracted using TF-IDF vectorization to capture key patterns in news content
-* **Image Features**: Extracted from image URLs and converted into numerical representations
-* **Feature Fusion**: Combines text and image features into a unified representation
-* **Model Comparison**: Multiple models are trained and evaluated to select the best-performing approach
-
----
-
-## Dataset
-
-The dataset used in this project is available in the `data/` folder:
-
-- final_multimodal_dataset.csv
-
-It contains:
-- Text data
-- Image URLs
-- Labels (REAL / FAKE)
-- Source information
-- Confidence scores
-
-The dataset is intentionally lightweight and structured to demonstrate the effectiveness of multimodal learning.
+Modern misinformation often combines misleading text with supporting visuals, making detection more challenging. Relying solely on text can lead to incomplete analysis. This project aims to address this limitation by incorporating both text and image data, demonstrating how multimodal learning can improve the effectiveness of fake news detection systems.
 
 ---
 
 ## Methodology
 
-The workflow of the system is as follows:
+The system follows a structured pipeline:
 
-1. Load and preprocess the dataset
-2. Convert textual data into numerical features using TF-IDF
-3. Extract image features from URLs using OpenCV
-4. Combine text and image features using feature fusion
-5. Train multiple machine learning models:
+1. **Data Preparation**
+   A synthetic dataset of approximately 200 samples is created to simulate real-world news scenarios. Each entry includes text, image URL, label, and additional metadata.
+
+2. **Text Feature Extraction**
+   Text data is processed using TF-IDF vectorization to capture meaningful linguistic patterns.
+
+3. **Image Feature Extraction**
+   Images are retrieved from URLs and converted into numerical representations through resizing and normalization.
+
+4. **Feature Fusion**
+   Text and image features are combined into a unified feature space for multimodal learning.
+
+5. **Model Training**
+   Multiple machine learning models are trained and compared:
 
    * Logistic Regression
    * Random Forest
    * XGBoost
-6. Evaluate models using:
 
-   * Accuracy
-   * Classification report
-   * Confusion matrix
-7. Select and save the best-performing model
+6. **Evaluation**
+   Models are evaluated using accuracy, classification reports, and confusion matrices. The best-performing model is selected for final predictions.
 
 ---
 
-## Results
+## System Architecture
 
-The multimodal approach shows improved performance compared to single-modality models. By combining both text and image information, the system is able to better capture complex patterns in the data.
+<img src="https://picsum.photos/seed/architecture/800/400" width="700"/>
 
-Model comparison helps identify the most suitable algorithm, and visualization tools such as confusion matrices provide deeper insights into prediction performance.
+---
+
+## Results and Analysis
+
+The model was trained and evaluated on a dataset of approximately 200 samples, demonstrating consistent performance across multiple classifiers. The multimodal approach improves the model’s ability to capture complex relationships between textual and visual data.
+
+Evaluation includes:
+
+* Accuracy comparison across models
+* Classification report (Precision, Recall, F1-score)
+* Confusion matrix visualization
+
+<img src="assets/confusion_matrix.png" width="500"/>
+<img src="assets/accuracy_plot.png" width="500"/>
+
+---
+
+## Sample Predictions
+
+### Example 1
+
+**Input Text:**
+Government launches new AI policy to improve healthcare
+
+**Input Image:** <img src="https://picsum.photos/seed/real1/800/400" width="600"/>
+
+**Prediction:** REAL
+
+---
+
+### Example 2
+
+**Input Text:**
+Aliens have secretly taken control of major cities
+
+**Input Image:** <img src="https://picsum.photos/seed/fake1/800/400" width="600"/>
+
+**Prediction:** FAKE
+
+---
+
+## Dataset
+
+The dataset used in this project is available in the `data/` directory:
+
+* `final_multimodal_dataset.csv`
+
+It contains:
+
+* News text
+* Image URLs
+* Labels (REAL / FAKE)
+* Source information
+* Confidence scores
+
+The dataset consists of approximately 200 diverse samples designed to simulate real-world multimodal news data. Although synthetic, it incorporates variability in language and structure, making it suitable for evaluating multimodal learning approaches.
 
 ---
 
 ## Project Structure
-
-The project is organized as follows:
 
 ```bash
 multimodal-fake-news/
@@ -116,36 +140,42 @@ python main.py
 
 ---
 
-## Key Features
+## Key Contributions
 
-* Multimodal learning using both text and image data
-* Feature fusion for improved prediction accuracy
-* Comparison of multiple machine learning models
-* Visualization of results through graphs and confusion matrices
-* Clean and reproducible pipeline
+* Development of a multimodal fake news detection system
+* Integration of text and image features using feature fusion
+* Comparative analysis of multiple machine learning models
+* Visualization of model performance through graphs and confusion matrices
+* End-to-end reproducible pipeline
 
 ---
 
-## Applications
+## Limitations
 
-* Fake news detection systems
-* Social media monitoring
-* Content moderation platforms
-* Media verification tools
+* The dataset is synthetically generated and may not fully capture real-world complexity
+* Image feature extraction is based on basic preprocessing techniques
+* Deep learning-based models are not included in the current implementation
+
+---
+
+## Future Work
+
+* Use large-scale real-world datasets (e.g., Fakeddit)
+* Apply transformer-based models such as BERT for text analysis
+* Use Convolutional Neural Networks (CNNs) for advanced image feature extraction
+* Extend the system for real-time fake news detection
 
 ---
 
 ## Conclusion
 
-This project demonstrates how combining textual and visual data can improve the detection of fake news. The multimodal approach provides a more comprehensive understanding of content compared to traditional methods.
-
-Although the current implementation uses a synthetic dataset, the same framework can be extended to real-world datasets and more advanced deep learning models.
+This project demonstrates the effectiveness of multimodal learning in detecting fake news. By combining textual and visual information, the system provides a more comprehensive understanding of content compared to traditional approaches. The proposed framework serves as a strong foundation for further research in multimodal misinformation detection.
 
 ---
 
 ## Note
 
-This project uses a synthetic dataset created for experimental and demonstration purposes. It is designed to simulate real-world conditions and highlight the effectiveness of multimodal learning techniques.
+This project uses a synthetic dataset created for experimental and demonstration purposes.
 
 ---
 
