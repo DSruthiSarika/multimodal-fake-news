@@ -1,4 +1,4 @@
-🚀 Multimodal Fake News Detection using Text and Image Fusion
+# 🚀 Multimodal Fake News Detection using Text and Image Fusion
 
 ---
 
