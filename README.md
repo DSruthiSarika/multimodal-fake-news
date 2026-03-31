@@ -34,12 +34,16 @@ This project introduces a multimodal machine learning pipeline that combines:
 
 ## Dataset
 
-The project uses a synthetic dataset designed to simulate real-world news scenarios. It includes:
+The dataset used in this project is available in the `data/` folder:
 
-* News text
-* Image URLs associated with each news item
-* Labels (REAL / FAKE)
-* Additional attributes such as source type and confidence score
+- final_multimodal_dataset.csv
+
+It contains:
+- Text data
+- Image URLs
+- Labels (REAL / FAKE)
+- Source information
+- Confidence scores
 
 The dataset is intentionally lightweight and structured to demonstrate the effectiveness of multimodal learning.
 
