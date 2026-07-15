@@ -26,24 +26,51 @@ classification performance.
 
 # Dataset
 
-Dataset: **Fakeddit**
+This project uses the **Fakeddit** multimodal dataset for fake news detection.
 
-Files used:
+Due to the large size of the dataset, it is **not included** in this repository.
 
--   `multimodal_train.tsv`
--   `multimodal_validate.tsv`
--   `multimodal_test_public.tsv`
+## 📥 Download Dataset
 
-Columns used by this project:
+Google Drive Folder:
 
--   `clean_title`
--   `title`
--   `image_url`
--   `hasImage`
--   `2_way_label`
+https://drive.google.com/drive/folders/1nZ-FOqfJLZgjFB6jpd1hBXCuBi0vPaLS?usp=drive_link
 
-Rows without images are filtered before training.
+The folder contains:
 
+- `multimodal_train.tsv`
+- `multimodal_validate.tsv`
+- `multimodal_test_public.tsv`
+
+Place all three files in the project root directory:
+
+```text
+multimodal-fake-news/
+│
+├── multimodal_train.tsv
+├── multimodal_validate.tsv
+├── multimodal_test_public.tsv
+│
+├── config.py
+├── download_images.py
+├── dataset.py
+├── model.py
+├── train.py
+├── evaluate.py
+├── predict.py
+├── main.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+After placing the dataset files, download and cache the images:
+
+```bash
+python download_images.py
+```
+
+> **Note:** This project uses the **Fakeddit** dataset for academic and research purposes.
 ------------------------------------------------------------------------
 
 # Methodology
