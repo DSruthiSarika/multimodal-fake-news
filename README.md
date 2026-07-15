@@ -1,184 +1,187 @@
 # 🚀 Multimodal Fake News Detection using Text and Image Fusion
 
----
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)
+![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
+![Dataset](https://img.shields.io/badge/Dataset-Fakeddit-green)
 
 ## Abstract
 
-The rapid growth of digital media has significantly increased the spread of misinformation across online platforms. Traditional fake news detection systems rely mainly on textual analysis, often overlooking the contextual signals provided by images. This project presents a multimodal machine learning framework that integrates both textual and visual features to improve the accuracy and robustness of fake news classification. By combining Natural Language Processing (NLP) and image-based feature extraction, the system captures richer patterns and enhances prediction reliability.
+This project presents a **multimodal deep learning framework** for fake
+news detection using the **Fakeddit** dataset. Unlike traditional
+text-only systems, it combines **BERT (bert-base-uncased)** for textual
+understanding and **ResNet-50** for visual feature extraction. The
+extracted representations are fused to classify news as **REAL** or
+**FAKE**.
 
----
+------------------------------------------------------------------------
 
-## Motivation
+# Motivation
 
-Modern misinformation often combines misleading text with supporting visuals, making detection more challenging. Relying solely on text can lead to incomplete analysis. This project aims to address this limitation by incorporating both text and image data, demonstrating how multimodal learning can improve the effectiveness of fake news detection systems.
+Fake news frequently combines misleading headlines with persuasive
+images. This project jointly analyzes both modalities to improve
+classification performance.
 
----
+------------------------------------------------------------------------
 
-## Methodology
+# Dataset
 
-The system follows a structured pipeline:
+Dataset: **Fakeddit**
 
-1. **Data Preparation**
-   A synthetic dataset of approximately 200 samples is created to simulate real-world news scenarios. Each entry includes text, image URL, label, and additional metadata.
+Files used:
 
-2. **Text Feature Extraction**
-   Text data is processed using TF-IDF vectorization to capture meaningful linguistic patterns.
+-   `multimodal_train.tsv`
+-   `multimodal_validate.tsv`
+-   `multimodal_test_public.tsv`
 
-3. **Image Feature Extraction**
-   Images are retrieved from URLs and converted into numerical representations through resizing and normalization.
+Columns used by this project:
 
-4. **Feature Fusion**
-   Text and image features are combined into a unified feature space for multimodal learning.
+-   `clean_title`
+-   `title`
+-   `image_url`
+-   `hasImage`
+-   `2_way_label`
 
-5. **Model Training**
-   Multiple machine learning models are trained and compared:
+Rows without images are filtered before training.
 
-   * Logistic Regression
-   * Random Forest
-   * XGBoost
+------------------------------------------------------------------------
 
-6. **Evaluation**
-   Models are evaluated using accuracy, classification reports, and confusion matrices. The best-performing model is selected for final predictions.
+# Methodology
 
----
+1.  Download and cache images
+2.  Tokenize text using **BERT Tokenizer**
+3.  Extract text embeddings using **BERT**
+4.  Extract image embeddings using **ResNet-50**
+5.  Concatenate both feature vectors
+6.  Classify using fully connected layers
 
-## System Architecture
+------------------------------------------------------------------------
 
-<img src="https://picsum.photos/seed/architecture/800/400" width="700"/>
+# Model Architecture
 
----
+``` text
+          Text
+            │
+            ▼
+   BERT-base-uncased
+            │
+      CLS Embedding (768)
 
-## Results and Analysis
+            +
 
-The model was trained and evaluated on a dataset of approximately 200 samples, demonstrating consistent performance across multiple classifiers. The multimodal approach improves the model’s ability to capture complex relationships between textual and visual data.
+          Image
+            │
+            ▼
+        ResNet-50
+            │
+   Image Features (2048)
 
-Evaluation includes:
+            │
+     Feature Concatenation
+            │
+      Fusion Neural Network
+            │
+      REAL / FAKE
+```
 
-* Accuracy comparison across models
-* Classification report (Precision, Recall, F1-score)
-* Confusion matrix visualization
+------------------------------------------------------------------------
 
-<img src="assets/confusion_matrix .png" width="500"/>
-<img src="assets/accuracy_plot .png" width="500"/>
+# Training Features
 
----
+-   AdamW Optimizer
+-   Cross Entropy Loss
+-   Mixed Precision (AMP)
+-   Early Stopping
+-   Gradient Clipping
+-   Learning Rate Scheduler
+-   Checkpoint Saving
 
-## Sample Predictions
+------------------------------------------------------------------------
+
+# Evaluation
+
+The model reports:
+
+-   Accuracy
+-   Precision
+-   Recall
+-   F1-score
+-   ROC-AUC
+-   Classification Report
+-   Confusion Matrix
+
+------------------------------------------------------------------------
+
+# Example Predictions
+
+The examples below are illustrative. After training, replace them with
+predictions generated by your model on the Fakeddit test set.
 
 ### Example 1
 
-**Input Text:**
+**Title**
+
 Government launches new AI policy to improve healthcare
 
-**Input Image:** <img src="https://picsum.photos/seed/real1/800/400" width="600"/>
-
-**Prediction:** REAL
-
----
+Prediction: **REAL**
 
 ### Example 2
 
-**Input Text:**
+**Title**
+
 Aliens have secretly taken control of major cities
 
-**Input Image:** <img src="https://picsum.photos/seed/fake1/800/400" width="600"/>
+Prediction: **FAKE**
 
-**Prediction:** FAKE
+------------------------------------------------------------------------
 
----
+# Project Structure
 
-## Dataset
-
-The dataset used in this project is available in the `data/` directory:
-
-* `final_multimodal_dataset.csv`
-
-It contains:
-
-* News text
-* Image URLs
-* Labels (REAL / FAKE)
-* Source information
-* Confidence scores
-
-The dataset consists of approximately 200 diverse samples designed to simulate real-world multimodal news data. Although synthetic, it incorporates variability in language and structure, making it suitable for evaluating multimodal learning approaches.
-
----
-
-## Project Structure
-
-```bash
+``` text
 multimodal-fake-news/
-│
+├── config.py
+├── download_images.py
+├── dataset.py
+├── model.py
+├── train.py
+├── evaluate.py
+├── predict.py
 ├── main.py
-├── README.md
 ├── requirements.txt
-├── .gitignore
-│
-├── data/
-│   └── final_multimodal_dataset.csv
-│
-├── models/
-│   └── best_model.pkl
-│
-├── assets/
-│   ├── confusion_matrix.png
-│   └── accuracy_plot.png
+├── README.md
+└── .gitignore
 ```
 
----
+------------------------------------------------------------------------
 
-## How to Run the Project
+# Installation
 
-### Step 1: Install dependencies
-
+``` bash
 pip install -r requirements.txt
+```
 
-### Step 2: Run the project
+------------------------------------------------------------------------
 
-python main.py
+# Usage
 
----
+``` bash
+python download_images.py
+python main.py --mode train
+python main.py --mode eval --checkpoint checkpoints/best_model.pt
+python main.py --mode predict --checkpoint checkpoints/best_model.pt --title "News title" --image_url "IMAGE_URL"
+```
 
-## Key Contributions
+------------------------------------------------------------------------
 
-* Development of a multimodal fake news detection system
-* Integration of text and image features using feature fusion
-* Comparative analysis of multiple machine learning models
-* Visualization of model performance through graphs and confusion matrices
-* End-to-end reproducible pipeline
+# Future Work
 
----
+-   Vision Transformers (ViT)
+-   CLIP-based multimodal learning
+-   Real-time fake news detection
+-   Web deployment
 
-## Limitations
+------------------------------------------------------------------------
 
-* The dataset is synthetically generated and may not fully capture real-world complexity
-* Image feature extraction is based on basic preprocessing techniques
-* Deep learning-based models are not included in the current implementation
+# Author
 
----
-
-## Future Work
-
-* Use large-scale real-world datasets (e.g., Fakeddit)
-* Apply transformer-based models such as BERT for text analysis
-* Use Convolutional Neural Networks (CNNs) for advanced image feature extraction
-* Extend the system for real-time fake news detection
-
----
-
-## Conclusion
-
-This project demonstrates the effectiveness of multimodal learning in detecting fake news. By combining textual and visual information, the system provides a more comprehensive understanding of content compared to traditional approaches. The proposed framework serves as a strong foundation for further research in multimodal misinformation detection.
-
----
-
-## Note
-
-This project uses a synthetic dataset created for experimental and demonstration purposes.
-
----
-
-## Author
-
-Digumurthy Sruthi Sarika
+**Digumurthy Sruthi Sarika**
