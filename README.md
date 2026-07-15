@@ -1,4 +1,4 @@
-# 🚀 Multimodal Fake News Detection using Text and Image Fusion
+# 🚀 Multimodal Fake News Detection using BERT and ResNet-50
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)
@@ -71,6 +71,18 @@ python download_images.py
 ```
 
 > **Note:** This project uses the **Fakeddit** dataset for academic and research purposes.
+------------------------------------------------------------------------
+
+## Preparing Images
+
+Before training, download and cache the images:
+
+```bash
+python download_images.py
+```
+
+This step downloads all images referenced by the dataset and stores them locally for faster training.
+
 ------------------------------------------------------------------------
 
 # Methodology
@@ -161,9 +173,9 @@ I do believe there's a squatch in these woods
 
 ![Example 2](assets/example2.jpg)
 
-Ground Truth: **TRUE**
+Ground Truth: **REAL**
 
-Model Prediction: **TRUE**
+Model Prediction: **REAL**
 
 ------------------------------------------------------------------------
 
@@ -194,6 +206,14 @@ pip install -r requirements.txt
 
 ------------------------------------------------------------------------
 
+## Requirements
+
+- Python 3.10+
+- PyTorch 2.x
+- CUDA (optional, recommended)
+
+------------------------------------------------------------------------
+
 # Usage
 
 ``` bash
@@ -205,12 +225,30 @@ python main.py --mode predict --checkpoint checkpoints/best_model.pt --title "Ne
 
 ------------------------------------------------------------------------
 
+## Output
+
+During training, the project generates:
+
+- `checkpoints/` — saved model checkpoints
+- `image_cache/` — downloaded images
+- Evaluation metrics
+- Confusion matrix
+- Classification report
+
+------------------------------------------------------------------------
+
 # Future Work
 
--   Vision Transformers (ViT)
--   CLIP-based multimodal learning
--   Real-time fake news detection
--   Web deployment
+- Integrate Vision Transformers (ViT) for improved image representation.
+- Explore CLIP-based multimodal feature learning.
+- Extend the framework for multi-class fake news classification.
+- Deploy the model as a web application using Streamlit or Flask.
+
+------------------------------------------------------------------------
+
+## License
+
+This project is developed for academic and educational purposes.
 
 ------------------------------------------------------------------------
 
