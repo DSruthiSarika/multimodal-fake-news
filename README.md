@@ -225,18 +225,6 @@ python main.py --mode predict --checkpoint checkpoints/best_model.pt --title "Ne
 
 ------------------------------------------------------------------------
 
-## Output
-
-During training, the project generates:
-
-- `checkpoints/` — saved model checkpoints
-- `image_cache/` — downloaded images
-- Evaluation metrics
-- Confusion matrix
-- Classification report
-
-------------------------------------------------------------------------
-
 # Future Work
 
 - Integrate Vision Transformers (ViT) for improved image representation.
